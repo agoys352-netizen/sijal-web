@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Activity, ClipboardList, ChevronRight, LogOut, Map, MapPin, Plus, Users, Settings, Menu, Search, Lock, Cloud, AlertCircle, Check, ArrowRight, CalendarDays, Route, LoaderCircle } from 'lucide-react'
-import { supabase, isSupabaseConfigured } from './lib/supabase'\nimport MapWorkspace from './MapWorkspace'
+import { supabase, isSupabaseConfigured } from './lib/supabase'
+import MapWorkspace from './MapWorkspace'
 
 type SessionRow = {
   id: string; session_code: string; creator_id: string; creator_name: string; survey_type: string;
@@ -53,7 +54,8 @@ export default function App(){
     e.preventDefault();if(!supabase||!user)return
     setBusy(true);setError('')
     const fullName=user.user_metadata?.full_name||user.email||'Surveyor'
-    const segs=segments.split(/[,\n]/).map(s=>s.trim()).filter(Boolean)
+    const segs=segments.split(/[,
+]/).map(s=>s.trim()).filter(Boolean)
     if(!studyArea.trim()||!segs.length){setError('Lokasi kajian dan minimal satu ruas/lengan wajib diisi.');setBusy(false);return}
     const sessionCode=code()
     try{
