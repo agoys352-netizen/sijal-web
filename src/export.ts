@@ -3,7 +3,8 @@ import JSZip from 'jszip'
 export type ExportSession={survey_type:string;study_area:string;survey_date:string;weather:string|null;creator_name:string;segments_list:string[];session_code:string}
 export type ExportPoint={id:string;surveyor_name:string;segment_name:string;segment_order:number;equipment_category:string;latitude:number;longitude:number;dms_coordinate:string;condition:string;notes?:string|null;created_at:string;photos?:{photo_url:string;order_index:number}[]}
 const categoryColors:Record<string,string>={'Rambu Peringatan':'F59E0B','Rambu Larangan':'EF4444','Rambu Perintah':'2563EB','Rambu Petunjuk':'10B981','RPPJ':'047857','PJU':'EAB308','Guardrail':'475569','Deleniator':'F97316','Kaca Cembung / Cermin Tikungan':'00A8E8','Halte':'0A2E5C','APILL':'7C3AED','Marka Jalan':'334155','Pita Penggaduh':'92400E','ZoSS':'DC2626','Pagar Pengaman':'64748B','Lainnya (Ketik Manual)':'0D9488'}
-const slug=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')\nconst esc=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]!))
+const slug=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')
+const esc=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]!))
 const sorted=(session:ExportSession,points:ExportPoint[])=>[...points].sort((a,b)=>(a.segment_order-b.segment_order)||new Date(a.created_at).getTime()-new Date(b.created_at).getTime())
 export async function exportExcel(session:ExportSession,points:ExportPoint[],members:string[]){
  const wb=new ExcelJS.Workbook();wb.creator='SIJAL';wb.created=new Date();const ws=wb.addWorksheet('Inventaris')
