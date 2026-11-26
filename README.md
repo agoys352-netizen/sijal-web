@@ -27,3 +27,14 @@ Sprint 0 infrastructure/security audit · Sprint 1 foundation · Sprint 2 mappin
 
 ## Deployment note
 Deployment is handled by GitHub Actions workflow `.github/workflows/deploy.yml`. Ensure repository Settings → Pages → Source is set to GitHub Actions.
+
+## Current implementation status
+- [x] Supabase Auth sign-up/sign-in/sign-out
+- [x] Session Hub list of sessions associated with the signed-in user
+- [x] Create survey session (road/intersection type, metadata, segment list, date, weather)
+- [x] Join a session using the session code
+- [ ] Survey map, GPS, equipment-point editor, photos and live sync
+- [ ] Recap/dashboard, export and offline KMZ
+
+## Frontend Supabase configuration
+Production build reads `.env.production`. It contains the Supabase project URL and **publishable/anon key only**. This key is expected to be public in browser applications. Do not place service-role or secret keys in frontend files. Row-level security is required to protect the database.
