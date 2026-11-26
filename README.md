@@ -24,3 +24,6 @@ Create `.env.local` from `.env.example`. Use only Supabase publishable/anon key 
 
 ## Project stages
 Sprint 0 infrastructure/security audit · Sprint 1 foundation · Sprint 2 mapping · Sprint 3 dashboard/collaboration · Sprint 4 exports · Sprint 5 final QA.
+
+## Deployment note
+Deployment is handled by GitHub Actions workflow `.github/workflows/deploy.yml`. Ensure repository Settings → Pages → Source is set to GitHub Actions.
