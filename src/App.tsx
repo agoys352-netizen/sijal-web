@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Map, ClipboardList, Users, Settings, Search, Bell, Plus, Navigation, Layers, MapPin, CheckCircle2, AlertTriangle, Menu, ChevronRight, Activity, Route, Camera, Download } from 'lucide-react'
+import { Map, ClipboardList, Users, Settings, Bell, Plus, Navigation, MapPin, Menu, ChevronRight, Activity, Route, Download } from 'lucide-react'
 
 const sessions = [
   { name: 'Inventarisasi Perlengkapan Jalan', area: 'Denpasar Selatan · Bali', date: '26 Nov 2026', status: 'Berlangsung', count: 128 },
