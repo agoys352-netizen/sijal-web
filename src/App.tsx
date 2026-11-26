@@ -11,7 +11,6 @@ const navItems = [{label:'Ringkasan',icon:Activity},{label:'Sesi Survei',icon:Cl
 const weatherOptions=['Cerah','Berawan','Mendung','Gerimis','Hujan']
 const today=()=>new Date().toISOString().slice(0,10)
 const code=()=>Math.random().toString(36).slice(2,8).toUpperCase()
-const equipment=['Rambu Peringatan','Rambu Larangan','Rambu Perintah','Rambu Petunjuk','RPPJ','PJU','Guardrail','Deleniator','Kaca Cembung / Cermin Tikungan','Halte','APILL','Marka Jalan','Pita Penggaduh','ZoSS','Pagar Pengaman','Lainnya (Ketik Manual)']
 
 export default function App(){
   const [active,setActive]=useState('Ringkasan'),[menuOpen,setMenuOpen]=useState(false)
