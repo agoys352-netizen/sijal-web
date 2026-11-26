@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet'
 import L from 'leaflet'
 import { supabase } from './lib/supabase'
-import { AlertCircle, Camera, Crosshair, LoaderCircle, MapPin, Plus, Trash2, X, Save, Layers, FileDown } from 'lucide-react'\nimport { exportExcel, exportKml, exportKmz } from './export'
+import { AlertCircle, Camera, Crosshair, LoaderCircle, MapPin, Plus, Trash2, X, Save, Layers, FileDown } from 'lucide-react'
+import { exportExcel, exportKml, exportKmz } from './export'
 import 'leaflet/dist/leaflet.css'
 
 type Session={id:string;session_code:string;study_area:string;survey_date:string;weather:string|null;segments_list:string[];is_locked:boolean;creator_id:string;creator_name:string;survey_type:string}
