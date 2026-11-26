@@ -54,8 +54,7 @@ export default function App(){
     e.preventDefault();if(!supabase||!user)return
     setBusy(true);setError('')
     const fullName=user.user_metadata?.full_name||user.email||'Surveyor'
-    const segs=segments.split(/[,
-]/).map(s=>s.trim()).filter(Boolean)
+    const segs=segments.split(/[,\n]/).map(s=>s.trim()).filter(Boolean)
     if(!studyArea.trim()||!segs.length){setError('Lokasi kajian dan minimal satu ruas/lengan wajib diisi.');setBusy(false);return}
     const sessionCode=code()
     try{
