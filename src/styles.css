@@ -92,3 +92,18 @@
 
 .session-link-button{font-size:11px!important;padding:7px 9px!important;white-space:nowrap;align-self:center}.session-card{gap:12px}
 @media(max-width:720px){.session-link-button{font-size:10px!important;padding:6px!important}.session-card{flex-wrap:wrap}}
+
+/* Simpang survey: choose arm/road links from the active master-road catalog */
+.simpang-road-picker{border:1px solid #dce8f3;border-radius:11px;overflow:hidden;background:#fbfdff}
+.simpang-road-picker-head{padding:11px 12px;background:#f3f8fc;border-bottom:1px solid #e4edf5;display:flex;flex-direction:column;gap:4px}
+.simpang-road-picker-head strong{font-size:12px;color:#234867}
+.simpang-road-picker-head small{font-size:10px;line-height:1.45;color:#8297ac}
+.simpang-road-option{display:flex!important;flex-direction:row!important;align-items:center!important;gap:10px!important;padding:10px 12px;border-bottom:1px solid #edf2f7;cursor:pointer}
+.simpang-road-option:last-of-type{border-bottom:0}
+.simpang-road-option input{width:16px;height:16px;accent-color:#0794d1;flex:0 0 auto}
+.simpang-road-option span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.simpang-road-option b{font-size:11px;color:#2b4d6b}
+.simpang-road-option small{font-size:10px;color:#8398ac}
+.simpang-road-option:has(input:checked){background:#eef8ff}
+.simpang-selection-summary{display:flex;align-items:flex-start;gap:6px;padding:10px 12px;background:#eaf7ff;color:#087db7;font-size:11px;line-height:1.5;border-top:1px solid #dceef9}
+.simpang-selection-summary svg{flex:0 0 auto;margin-top:1px}
