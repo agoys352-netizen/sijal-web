@@ -99,7 +99,8 @@ export default function App(){
       setCreateOpen(false);setNotice('Sesi dibuat! Kode sesi: '+sessionCode);setStudyArea('');setSegments('');setSelectedRoadId('');await loadSessions()
     }catch(e:any){setError(e.message??'Gagal membuat sesi')}finally{setBusy(false)}
   }
-  async function linkLegacySession(e:React.FormEvent){e.preventDefault();const target=linkSessionTarget;if(!supabase||!target||!linkRoadId)return;if(target.my_role!=='LEADER'){setError('Hanya Ketua Tim yang dapat menghubungkan sesi ke master ruas.');return}setLinkBusy(true);setError('');try{const {error:linkErr}=await supabase.from('survey_sessions').update({road_segment_id:linkRoadId}).eq('id',target.id);if(linkErr)throw linkErr;setLinkSessionTarget(null);setLinkRoadId('');setNotice('Sesi '+target.session_code+' berhasil dihubungkan ke master ruas.');await loadSessions()}catch(e:any){setError(e.message||'Gagal menghubungkan sesi ke master ruas')}finally{setLinkBusy(false)}}\n  async function joinSession(e:React.FormEvent){
+  async function linkLegacySession(e:React.FormEvent){e.preventDefault();const target=linkSessionTarget;if(!supabase||!target||!linkRoadId)return;if(target.my_role!=='LEADER'){setError('Hanya Ketua Tim yang dapat menghubungkan sesi ke master ruas.');return}setLinkBusy(true);setError('');try{const {error:linkErr}=await supabase.from('survey_sessions').update({road_segment_id:linkRoadId}).eq('id',target.id);if(linkErr)throw linkErr;setLinkSessionTarget(null);setLinkRoadId('');setNotice('Sesi '+target.session_code+' berhasil dihubungkan ke master ruas.');await loadSessions()}catch(e:any){setError(e.message||'Gagal menghubungkan sesi ke master ruas')}finally{setLinkBusy(false)}}
+  async function joinSession(e:React.FormEvent){
     e.preventDefault();if(!supabase||!user)return
     const normalizedCode=joinCode.trim().toUpperCase()
     if(normalizedCode.length<6){setError('Masukkan kode sesi minimal 6 karakter.');return}
