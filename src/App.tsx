@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Activity, ClipboardList, ChevronRight, LogOut, Map, MapPin, Plus, Users, Settings, Menu, Search, Lock, Cloud, AlertCircle, Check, ArrowRight, CalendarDays, Route, LoaderCircle } from 'lucide-react'
+import { Activity, ClipboardList, ChevronRight, LogOut, Map, MapPin, Plus, Users, Settings, Menu, Search, Lock, AlertCircle, Check, ArrowRight, CalendarDays, LoaderCircle } from 'lucide-react'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import MapWorkspace from './MapWorkspace'
 
@@ -94,6 +94,4 @@ export default function App(){
   {joinOpen&&<Modal title="Gabung sesi survei" onClose={()=>setJoinOpen(false)}><form onSubmit={joinSession} className="form-stack"><label>Kode sesi<input required minLength={6} maxLength={8} value={joinCode} onChange={e=>setJoinCode(e.target.value.toUpperCase())} placeholder="ABC123" className="code-input"/></label><p className="form-hint">Masukkan kode 6–8 karakter dari Ketua Tim.</p><button className="primary-button full" disabled={busy}>{busy?<LoaderCircle className="spin"/>:<ArrowRight size={17}/>} Gabung sesi</button></form></Modal>}
   </div>
 }
-function Stat({icon:Icon,label,value,note,color}:{icon:any,label:string,value:string,note:string,color:string}){return <div className="stat-card"><div className={'stat-icon '+color}><Icon size={19}/></div><div className="stat-label">{label}</div><strong>{value}</strong><small>{note}</small></div>}
-function Quick({icon:Icon,title,desc,onClick}:{icon:any,title:string,desc:string,onClick:()=>void}){return <button className="quick-card" onClick={onClick}><div className="quick-icon"><Icon size={20}/></div><div><b>{title}</b><small>{desc}</small></div><ChevronRight size={17}/></button>}
 function Modal({title,onClose,children}:{title:string,onClose:()=>void,children:React.ReactNode}){return <div className="modal-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}><div className="modal"><header><h2>{title}</h2><button className="icon-button" onClick={onClose}>×</button></header>{children}</div></div>}
