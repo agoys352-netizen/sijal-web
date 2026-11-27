@@ -29,7 +29,7 @@ export default function App(){
 
   useEffect(()=>{ if(!supabase)return; supabase.auth.getSession().then(({data})=>setUser(data.session?.user??null)); const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>setUser(session?.user??null));return()=>subscription.unsubscribe()},[])
   useEffect(()=>{if(user)loadSessions()},[user])
-  useEffect(()=>{if((createOpen||linkSessionTarget)&&supabase){supabase.from('road_segments').select('id,road_code,name,regency,district,road_type').eq('status','ACTIVE').order('name').then(({data,error})=>{if(error){setError('Gagal memuat master ruas: '+error.message);setMasterRoads([])}else setMasterRoads(data||[])})}},[createOpen])
+  useEffect(()=>{if((createOpen||linkSessionTarget)&&supabase){supabase.from('road_segments').select('id,road_code,name,regency,district,road_type').eq('status','ACTIVE').order('name').then(({data,error})=>{if(error){setError('Gagal memuat master ruas: '+error.message);setMasterRoads([])}else setMasterRoads(data||[])})}},[createOpen,linkSessionTarget])
   useEffect(()=>{const road=masterRoads.find(r=>r.id===selectedRoadId);if(surveyType==='RUAS'&&road){setStudyArea(road.name);setSegments(road.name)}},[selectedRoadId,masterRoads,surveyType])
   async function loadSessions(){
     if(!supabase||!user)return
