@@ -31,7 +31,7 @@ create index if not exists road_segments_status_idx on public.road_segments(stat
 create index if not exists road_segments_region_idx on public.road_segments(regency, district);
 create index if not exists road_segments_created_by_idx on public.road_segments(created_by);
 alter table public.road_segments enable row level security;
-grant select, insert, update on public.road_segments to authenticated;
+grant select, insert, update on public.road_segments to authenticated;\ngrant usage, select on sequence public.road_segments_code_seq to authenticated;
 drop policy if exists road_segments_select_active_or_owner on public.road_segments;
 create policy road_segments_select_active_or_owner on public.road_segments for select to authenticated using (status = 'ACTIVE' or created_by = (select auth.uid()));
 drop policy if exists road_segments_insert_self on public.road_segments;
