@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Activity, ClipboardList, ChevronRight, LogOut, Map, MapPin, Plus, Users, Settings, Menu, Search, Lock, AlertCircle, Check, ArrowRight, CalendarDays, LoaderCircle, Radio, UserPlus, Navigation, ClipboardCheck, Trash2, ChartNoAxesCombined } from 'lucide-react'
+import { Activity, ClipboardList, ChevronRight, LogOut, Map, MapPin, Plus, Users, Settings, Menu, Search, Lock, AlertCircle, Check, ArrowRight, CalendarDays, LoaderCircle, Radio, UserPlus, Navigation, ClipboardCheck, Trash2, BarChart3 } from 'lucide-react'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import MapWorkspace from './MapWorkspace'
 import DashboardAnalysis from './DashboardAnalysis'
