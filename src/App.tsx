@@ -115,7 +115,7 @@ export default function App(){
       await loadSessions()
     }catch(e:any){setError(e.message??'Gagal bergabung ke sesi')}finally{setBusy(false)}
   }
-  const visibleSessions=useMemo(()=>sessions.filter(s=>(s.study_area+' '+s.session_code+' '+s.survey_type).toLowerCase().includes(search.toLowerCase())),[sessions,search])
+  const visibleSessions=useMemo(()=>sessions.filter(s=>(s.study_area+' '+s.session_code+' '+s.survey_type+' '+(s.road_name_snapshot||'')+' '+(s.road_code_snapshot||'')).toLowerCase().includes(search.toLowerCase())),[sessions,search])
   const [teamSessionId,setTeamSessionId]=useState('all'),[teamFilter,setTeamFilter]=useState('all'),[teamSearch,setTeamSearch]=useState('')
   const [teamMembers,setTeamMembers]=useState<any[]>([]),[teamLocations,setTeamLocations]=useState<any[]>([]),[teamPointCounts,setTeamPointCounts]=useState<Record<string,number>>({}),[teamBusy,setTeamBusy]=useState(false),[teamError,setTeamError]=useState('')
   async function loadTeam(){
