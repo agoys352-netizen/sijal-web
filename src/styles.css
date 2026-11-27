@@ -27,3 +27,7 @@
 .surveyor-bubble{width:40px;height:40px;border-radius:50% 50% 50% 10%;transform:rotate(-45deg);background:linear-gradient(145deg,#20b8f2,#0870c4);border:3px solid #fff;box-shadow:0 3px 12px #123b5a66;display:grid;place-items:center;animation:surveyor-marker-pop .25s ease-out}
 .surveyor-bubble svg{width:23px;height:23px;transform:rotate(45deg);fill:#fff;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 @keyframes surveyor-marker-pop{from{transform:rotate(-45deg) scale(.65)}to{transform:rotate(-45deg) scale(1)}}
+
+/* Team live location tracking UI */
+.team-live-status{display:flex;align-items:center;gap:7px;background:#eff9ff;border:1px solid #c7e8fb;color:#075985;border-radius:10px;padding:9px 12px;font-size:11px}.team-live-status span{color:#3d7898}.sijal-team-marker{background:transparent!important;border:0!important;overflow:visible!important}.team-surveyor-bubble{width:32px;height:32px;border-radius:50% 50% 50% 12%;transform:rotate(-45deg);background:linear-gradient(145deg,#20c6a8,#087f8c);border:2px solid #fff;box-shadow:0 3px 10px #123b5a55;display:grid;place-items:center}.team-surveyor-bubble svg{width:19px;height:19px;transform:rotate(45deg);fill:#fff;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:650px){.team-live-status{flex-wrap:wrap}}
