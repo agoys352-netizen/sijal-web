@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Activity, ClipboardList, ChevronRight, LogOut, Map, MapPin, Plus, Users, Settings, Menu, Search, Lock, AlertCircle, Check, ArrowRight, CalendarDays, LoaderCircle, Radio, UserPlus, Navigation, ClipboardCheck, Trash2, BarChart3, Route } from 'lucide-react'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import MapWorkspace from './MapWorkspace'
-import DashboardAnalysis from './DashboardAnalysis'\nimport MasterRoads from './MasterRoads'
+import DashboardAnalysis from './DashboardAnalysis'
+import MasterRoads from './MasterRoads'
 
 type SessionRow = {
   id: string; session_code: string; creator_id: string; creator_name: string; survey_type: string;
