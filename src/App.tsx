@@ -86,8 +86,7 @@ export default function App(){
     setBusy(true);setError('')
     const fullName=user.user_metadata?.full_name||user.email||'Surveyor'
     const selectedRoad=masterRoads.find(r=>r.id===selectedRoadId)
-    const segs=surveyType==='RUAS'?(selectedRoad?[selectedRoad.name]:[]):segments.split(/[,\
-]/).map(s=>s.trim()).filter(Boolean)
+    const segs=surveyType==='RUAS'?(selectedRoad?[selectedRoad.name]:[]):segments.split(/[,\\r\\n].map(s=>s.trim()).filter(Boolean)
     const area=surveyType==='RUAS'?(selectedRoad?.name||''):studyArea.trim()
     if(surveyType==='RUAS'&&!selectedRoad){setError('Pilih master ruas jalan aktif terlebih dahulu.');setBusy(false);return}
     if(!area||!segs.length){setError('Lokasi kajian dan minimal satu ruas/lengan wajib diisi.');setBusy(false);return}
