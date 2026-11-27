@@ -89,3 +89,6 @@
 .session-road-link{display:flex!important;align-items:center;gap:5px;color:#0b78b8!important;font-size:11px!important;font-weight:600;margin-top:5px!important}
 .form-hint{font-size:12px;color:#6f89a2;background:#f4f9fd;border:1px solid #dceaf5;border-radius:9px;padding:9px 11px;line-height:1.5}
 .form-stack select:disabled,.form-stack input:read-only{background:#f3f7fb;color:#61788e}
+
+.session-link-button{font-size:11px!important;padding:7px 9px!important;white-space:nowrap;align-self:center}.session-card{gap:12px}
+@media(max-width:720px){.session-link-button{font-size:10px!important;padding:6px!important}.session-card{flex-wrap:wrap}}
