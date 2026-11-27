@@ -5,7 +5,8 @@ import { BarChart3, MapPin, CheckCircle2, Search, LoaderCircle, Download, Filter
 type Session={id:string;study_area:string;session_code:string;survey_date:string;is_locked:boolean}
 type Point={id:string;session_id:string;surveyor_id:string;surveyor_name:string;segment_name:string;equipment_category:string;latitude:number;longitude:number;condition:string;notes:string|null;created_at:string;photos?:{photo_url:string;order_index:number}[]}
 const categories=['Rambu Peringatan','Rambu Larangan','Rambu Perintah','Rambu Petunjuk','RPPJ','PJU','Guardrail','Deleniator','Kaca Cembung / Cermin Tikungan','Halte','APILL','Marka Jalan','Pita Penggaduh','ZoSS','Water Barrier','Lainnya (Ketik Manual)']
-const categoryLabel=(category:string)=>category==='Pagar Pengaman'?'Water Barrier':category\nconst goodConditions=['Baik']
+const categoryLabel=(category:string)=>category==='Pagar Pengaman'?'Water Barrier':category
+const goodConditions=['Baik']
 const conditionOptions=['Semua kondisi','Baik','Baik, Tertutup Benda Lain','Kotor','Bengkok','Pudar','Rusak Ringan','Rusak Berat','Hilang','Lainnya (Ketik Manual)']
 export default function DashboardAnalysis({userId,sessions}:{userId:string;sessions:Session[]}){
  const [points,setPoints]=useState<Point[]>([]),[busy,setBusy]=useState(true),[error,setError]=useState('')
