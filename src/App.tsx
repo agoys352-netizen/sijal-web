@@ -9,7 +9,7 @@ type SessionRow = {
   study_area: string; survey_date: string; weather: string | null; segments_list: string[]; is_locked: boolean;
   created_at: string; my_role?: string; points_count?: number
 }
-const navItems = [{label:'Sesi Survei',icon:ClipboardList},{label:'Peta Inventaris',icon:Map},{label:'Tim Surveyor',icon:Users},{label:'Analisis Inventaris',icon:ChartNoAxesCombined},{label:'Pengaturan',icon:Settings}]
+const navItems = [{label:'Sesi Survei',icon:ClipboardList},{label:'Peta Inventaris',icon:Map},{label:'Tim Surveyor',icon:Users},{label:'Analisis Inventaris',icon:BarChart3},{label:'Pengaturan',icon:Settings}]
 const weatherOptions=['Cerah','Berawan','Mendung','Gerimis','Hujan']
 const today=()=>new Date().toISOString().slice(0,10)
 const logoUrl=`${import.meta.env.BASE_URL}sijal-logo.svg`
