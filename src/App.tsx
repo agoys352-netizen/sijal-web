@@ -28,7 +28,9 @@ export default function App(){
   const [search,setSearch]=useState(''),[selectedSession,setSelectedSession]=useState<SessionRow|null>(null)
 
   useEffect(()=>{ if(!supabase)return; supabase.auth.getSession().then(({data})=>setUser(data.session?.user??null)); const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>setUser(session?.user??null));return()=>subscription.unsubscribe()},[])
-  useEffect(()=>{if(user)loadSessions()},[user])\n  useEffect(()=>{if(createOpen&&supabase){supabase.from('road_segments').select('id,road_code,name,regency,district,road_type').eq('status','ACTIVE').order('name').then(({data,error})=>{if(error){setError('Gagal memuat master ruas: '+error.message);setMasterRoads([])}else setMasterRoads(data||[])})}},[createOpen])\n  useEffect(()=>{const road=masterRoads.find(r=>r.id===selectedRoadId);if(surveyType==='RUAS'&&road){setStudyArea(road.name);setSegments(road.name)}},[selectedRoadId,masterRoads,surveyType])
+  useEffect(()=>{if(user)loadSessions()},[user])
+  useEffect(()=>{if(createOpen&&supabase){supabase.from('road_segments').select('id,road_code,name,regency,district,road_type').eq('status','ACTIVE').order('name').then(({data,error})=>{if(error){setError('Gagal memuat master ruas: '+error.message);setMasterRoads([])}else setMasterRoads(data||[])})}},[createOpen])
+  useEffect(()=>{const road=masterRoads.find(r=>r.id===selectedRoadId);if(surveyType==='RUAS'&&road){setStudyArea(road.name);setSegments(road.name)}},[selectedRoadId,masterRoads,surveyType])
   async function loadSessions(){
     if(!supabase||!user)return
     setBusy(true);setError('')
@@ -79,7 +81,26 @@ export default function App(){
     }catch(e:any){setDeleteError(e.message||'Penghapusan sesi gagal')}
     finally{setDeleteBusy(false)}
   }
-  async function createSession(e:React.FormEvent){\n    e.preventDefault();if(!supabase||!user)return\n    setBusy(true);setError('')\n    const fullName=user.user_metadata?.full_name||user.email||'Surveyor'\n    const selectedRoad=masterRoads.find(r=>r.id===selectedRoadId)\n    const segs=surveyType==='RUAS'?(selectedRoad?[selectedRoad.name]:[]):segments.split(/[,\\n]/).map(s=>s.trim()).filter(Boolean)\n    const area=surveyType==='RUAS'?(selectedRoad?.name||''):studyArea.trim()\n    if(surveyType==='RUAS'&&!selectedRoad){setError('Pilih master ruas jalan aktif terlebih dahulu.');setBusy(false);return}\n    if(!area||!segs.length){setError('Lokasi kajian dan minimal satu ruas/lengan wajib diisi.');setBusy(false);return}\n    const sessionCode=code()\n    try{\n      const {data:session,error:insertErr}=await supabase.from('survey_sessions').insert({session_code:sessionCode,creator_id:user.id,creator_name:fullName,survey_type:surveyType,study_area:area,survey_date:surveyDate,weather:weatherNote.trim()?weather+' — '+weatherNote.trim():weather,segments_list:segs,is_locked:false,road_segment_id:selectedRoad?.id||null}).select().single()\n      if(insertErr)throw insertErr\n      const {error:memberErr}=await supabase.from('session_members').insert({session_id:session.id,user_id:user.id,member_name:fullName,role:'LEADER'})\n      if(memberErr)throw memberErr\n      setCreateOpen(false);setNotice('Sesi dibuat! Kode sesi: '+sessionCode);setStudyArea('');setSegments('');setSelectedRoadId('');await loadSessions()\n    }catch(e:any){setError(e.message??'Gagal membuat sesi')}finally{setBusy(false)}\n  }\n  async function joinSession(e:React.FormEvent){
+  async function createSession(e:React.FormEvent){
+    e.preventDefault();if(!supabase||!user)return
+    setBusy(true);setError('')
+    const fullName=user.user_metadata?.full_name||user.email||'Surveyor'
+    const selectedRoad=masterRoads.find(r=>r.id===selectedRoadId)
+    const segs=surveyType==='RUAS'?(selectedRoad?[selectedRoad.name]:[]):segments.split(/[,\
+]/).map(s=>s.trim()).filter(Boolean)
+    const area=surveyType==='RUAS'?(selectedRoad?.name||''):studyArea.trim()
+    if(surveyType==='RUAS'&&!selectedRoad){setError('Pilih master ruas jalan aktif terlebih dahulu.');setBusy(false);return}
+    if(!area||!segs.length){setError('Lokasi kajian dan minimal satu ruas/lengan wajib diisi.');setBusy(false);return}
+    const sessionCode=code()
+    try{
+      const {data:session,error:insertErr}=await supabase.from('survey_sessions').insert({session_code:sessionCode,creator_id:user.id,creator_name:fullName,survey_type:surveyType,study_area:area,survey_date:surveyDate,weather:weatherNote.trim()?weather+' — '+weatherNote.trim():weather,segments_list:segs,is_locked:false,road_segment_id:selectedRoad?.id||null}).select().single()
+      if(insertErr)throw insertErr
+      const {error:memberErr}=await supabase.from('session_members').insert({session_id:session.id,user_id:user.id,member_name:fullName,role:'LEADER'})
+      if(memberErr)throw memberErr
+      setCreateOpen(false);setNotice('Sesi dibuat! Kode sesi: '+sessionCode);setStudyArea('');setSegments('');setSelectedRoadId('');await loadSessions()
+    }catch(e:any){setError(e.message??'Gagal membuat sesi')}finally{setBusy(false)}
+  }
+  async function joinSession(e:React.FormEvent){
     e.preventDefault();if(!supabase||!user)return
     const normalizedCode=joinCode.trim().toUpperCase()
     if(normalizedCode.length<6){setError('Masukkan kode sesi minimal 6 karakter.');return}
