@@ -39,3 +39,9 @@
 
 /* Leader-only session deletion controls */
 .session-delete-button{display:inline-flex;align-items:center;gap:6px;border:1px solid #f5c8c8;background:#fff;color:#c53d46;border-radius:9px;padding:8px 10px;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer}.session-delete-button:hover{background:#fff4f4;border-color:#eaa0a0}.danger-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:#c63e47;color:#fff;border:1px solid #c63e47;border-radius:10px;padding:10px 14px;font-weight:700;font-size:12px;cursor:pointer}.danger-button:hover{background:#ad3039}.danger-button:disabled,.session-delete-button:disabled{opacity:.6;cursor:not-allowed}.delete-session-confirm{display:flex;flex-direction:column;gap:14px}.delete-session-warning{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff5f4;border:1px solid #f5d3d1;border-radius:12px;color:#bb3a42}.delete-session-warning svg{flex-shrink:0;margin-top:1px}.delete-session-warning strong{font-size:13px}.delete-session-warning p{font-size:12px;line-height:1.65;color:#79545a;margin:6px 0 0}.delete-session-count{font-size:12px;color:#61768d;margin:0}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:4px}.session-card{flex-wrap:wrap}.session-card .session-info{flex:1;min-width:180px}@media(max-width:700px){.session-delete-button{padding:7px 8px;font-size:10px}.session-card .status{margin-left:auto}.session-card .session-info{flex-basis:100%;order:2}.session-card .session-icon{order:1}.session-card .session-delete-button{order:3}.session-card .icon-button.arrow{order:4}}
+
+/* Ensure point-entry modal sits above all Leaflet GIS panes and controls */
+.modal-backdrop{z-index:2000;isolation:isolate}
+.modal-backdrop .modal{position:relative;z-index:2001}
+.map-point-modal{max-height:94vh;overflow-y:auto;overscroll-behavior:contain}
+.map-point-modal header{position:sticky;top:0;background:#fff;z-index:3;padding-bottom:8px}
