@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from './lib/supabase'
-import { Plus, ClipboardList, Search, RefreshCw, Route, MapPin, Pencil, Archive, LoaderCircle, AlertCircle, CheckCircle2, X, Filter } from 'lucide-react'
+import { Plus, ClipboardList, Search, RefreshCw, Route, MapPin, Pencil, Archive, LoaderCircle, AlertCircle, CheckCircle2, X, Filter, Trash2 } from 'lucide-react'
 import './MasterRoads.css'
 type Road = { id:string; road_code:string; name:string; official_code:string|null; road_type:string; regency:string; district:string; width_avg_m:number|null; surface_type:string|null; description:string|null; status:'ACTIVE'|'INACTIVE'|'ARCHIVED'; created_by:string; created_at:string; updated_at:string }
 type RoadForm = { name:string; official_code:string; road_type:string; regency:string; district:string; width_avg_m:string; surface_type:string; description:string; status:Road['status'] }
