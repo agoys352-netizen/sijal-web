@@ -86,7 +86,7 @@ export default function App(){
     setBusy(true);setError('')
     const fullName=user.user_metadata?.full_name||user.email||'Surveyor'
     const selectedRoad=masterRoads.find(r=>r.id===selectedRoadId)
-    const simpangRoads=selectedSimpangRoadIds.map(id=>masterRoads.find(r=>r.id===id)).filter(r=>Boolean(r))
+    const simpangRoads=selectedSimpangRoadIds.flatMap(id=>{const road=masterRoads.find(r=>r.id===id);return road?[road]:[]})
     const segs=surveyType==='RUAS'?(selectedRoad?[selectedRoad.name]:[]):simpangRoads.map(r=>r.name)
     const area=surveyType==='RUAS'?(selectedRoad?.name||''):studyArea.trim()
     if(surveyType==='RUAS'&&!selectedRoad){setError('Pilih master ruas jalan aktif terlebih dahulu.');setBusy(false);return}
