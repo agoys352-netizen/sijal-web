@@ -6,3 +6,21 @@
 
 .master-road-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 @media(max-width:620px){.master-road-actions{width:100%}.master-road-actions button{flex:1;justify-content:center}}
+
+/* Road delete controls and confirmation dialog */
+.road-actions .road-delete-icon{color:#b43b43;border-color:#f0d4d7;padding:6px;min-width:28px;justify-content:center}
+.road-actions .road-delete-icon:hover{background:#fff1f2;border-color:#e7b9bf}
+.danger-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #e3aeb4;background:#c9434c;color:#fff;border-radius:9px;padding:9px 12px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.danger-button:hover{background:#b8313a}
+.danger-button:disabled{opacity:.6;cursor:not-allowed}
+.road-delete-modal{width:min(510px,100%);max-height:94vh;overflow:auto;background:#fff;border-radius:16px;padding:22px;box-shadow:0 20px 65px #102c4b40}
+.road-delete-modal header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.road-delete-modal header small{font-size:10px;letter-spacing:1px;color:#8397aa;font-weight:800}
+.road-delete-modal h3{font-size:20px;margin:5px 0;color:#183c60}
+.road-delete-modal header button{border:0;background:#f1f6fa;color:#688199;border-radius:8px;width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+.road-delete-warning{display:flex;gap:10px;background:#fff7e9;border:1px solid #f2dfb7;color:#9a6914;border-radius:11px;padding:12px;margin:16px 0}
+.road-delete-warning p{font-size:11px;line-height:1.5;margin:4px 0 0}
+.road-delete-target{display:flex;flex-direction:column;gap:6px;background:#f7fafd;border:1px solid #e5edf5;border-radius:10px;padding:12px;margin:12px 0}
+.road-delete-target b{font-family:monospace;color:#0b84bd;font-size:12px}.road-delete-target strong{font-size:13px;color:#244967}.road-delete-target small{font-size:11px;color:#8196aa}
+.road-delete-modal footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:18px}
+@media(max-width:620px){.road-delete-modal{padding:16px}.road-delete-modal footer{flex-direction:column-reverse}.road-delete-modal footer button{width:100%}}
