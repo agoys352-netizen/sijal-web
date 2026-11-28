@@ -1,0 +1,1 @@
+create policy road_segments_delete_owner\non public.road_segments\nfor delete\nto authenticated\nusing (created_by = (select auth.uid()));\n
