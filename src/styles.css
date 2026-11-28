@@ -107,3 +107,6 @@
 .simpang-road-option:has(input:checked){background:#eef8ff}
 .simpang-selection-summary{display:flex;align-items:flex-start;gap:6px;padding:10px 12px;background:#eaf7ff;color:#087db7;font-size:11px;line-height:1.5;border-top:1px solid #dceef9}
 .simpang-selection-summary svg{flex:0 0 auto;margin-top:1px}
+
+/* Planning-first master road entry point */
+.simpang-road-picker-head strong{display:block}
