@@ -1,1 +1,5 @@
-create policy road_segments_delete_owner\non public.road_segments\nfor delete\nto authenticated\nusing (created_by = (select auth.uid()));\n
+create policy road_segments_delete_owner
+on public.road_segments
+for delete
+to authenticated
+using (created_by = (select auth.uid()));
